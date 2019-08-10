@@ -1,0 +1,4 @@
+ESP32 bluetooth interface
+	coordinator?
+	star or mesh network?
+ESP32 wifi interface (gateway)
