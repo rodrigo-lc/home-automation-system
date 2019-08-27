@@ -1,4 +1,4 @@
-# ble-sensor-network (bsn)
+# ble-home-automation (bha)
 A sensor network using modular BLE sensors and an ESP32 as a gateway and also a gatekeeper (literally), providing an access control system with face recognition.
 
 # requirements:
