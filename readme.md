@@ -50,7 +50,7 @@ A sensor network using modular BLE sensors and an ESP32 as a gateway and also a 
     ![NRF52832 module](docs/img/nrf52832_module.jpg)
 
 # system datapath
-  - _IMAGE_
+  ![System Diagram](https://imgur.com/wHgt4r0)
   
 # tools
   - 1x ESP32-CAM
