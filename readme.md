@@ -61,4 +61,5 @@ A sensor network using modular BLE sensors and an ESP32 as a gateway and also a 
   - 1x Relay 5V
  
 # contributors
-Rodrigo Belisário Ramos (rodbelisario)<br/>Rodigo Luiz da Costa (rodrigo-lc)<br/>Tarcis Aurélio Becher
+Rodrigo Belisário Ramos (rodbelisario)<br/>Rodigo Luiz da Costa (rodrigo-lc)<br/>Tarcis Aurélio Becher (tarciszera)
+
