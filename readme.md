@@ -4,7 +4,7 @@ A sensor network using modular BLE sensors and an ESP32 as a gateway and also a 
 # requirements:
 1. **Power consumption**
     1. Wireless BLE sensors must have 2+ years lifespan
-        - A Panasonic 3V CR2032 225.000uAh can provide 10uA mean current for 2 years.
+        - A Panasonic 3V CR2032 225.000uAh can provide 12,84uA mean current for 2 years.
     2. The gateway and all the access control peripherals
     
 2. **Interface**
