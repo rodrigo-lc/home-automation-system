@@ -47,6 +47,7 @@ A sensor network using modular BLE sensors and an ESP32 as a gateway and also a 
   - Relay with normally closed phase
   - Nordic Semiconductor's NRF52832 microcontroller
     - ARM Cortex-M4F (with floating point ALU)
+    ![NRF52832 module](docs/img/nrf52832_module.jpg)
 
 # system datapath
   - _IMAGE_
