@@ -3,29 +3,29 @@ A home automation system with wireless sensors, actuators and a gateway to contr
 
 # Requirements:
 1. **Power consumption**
-    a. Wireless sensors must have 2+ years lifespan
+    1. Wireless sensors must have 2+ years lifespan
     
 2. **Interface**
-    a. A web interface for sensor data monitoring
-    b. A web interface providing the access events datalog and sensor status
-    c. A local data interface containing the access events datalog
+    1. A web interface for sensor data monitoring
+    2. A web interface providing the access events datalog and sensor status
+    3. A local data interface containing the access events datalog
     
 3. **Access control**
-    a. An *access control* with face recognition (e.g.: opening a 12V electric lock)
-    b. A register interface, enabling access for multiple users
+    1. An *access control* with face recognition (e.g.: opening a 12V electric lock)
+    2. A register interface, enabling access for multiple users
 
 4. **Security**
-    a. A datalog containing a list of previous access events (valid, invalid and panic) with the respective time and date
-    b. Encrypted data in the web server
+    1. A datalog containing a list of previous access events (valid, invalid and panic) with the respective time and date
+    2. Encrypted data in the web server
     
 5. **Network**
-    a. The wireless sensors must communicate with the gateway their respectives states and sensors values
-    
+    1. The wireless sensors must communicate with the gateway their respectives states and sensors values
+   
 6. **Sensors**
-    a. Camera (for face recognition)
-    b.
-    c.
-    d.  
+    1. Camera (for face recognition)
+    2.
+    3.
+    4.  
     
 7. **Actuators**
     a.
