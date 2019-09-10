@@ -28,9 +28,9 @@ A home automation system with wireless sensors, actuators and a gateway to contr
     4.  
     
 7. **Actuators**
-    a.
-    b.
-    c.
+    1.
+    2.
+    3.
     
 # solution/hardware requirements
 * **BLE/WI-FI Gateway**
