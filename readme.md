@@ -30,7 +30,7 @@ A home automation system with wireless sensors, actuators and a gateway to contr
     
 # Market analysis:  
 	The team gathered information about microprocessors with wireless interfaces. Here's the result:
-    ![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.jpg)  
+    ![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
 	
 # Solution:
     
