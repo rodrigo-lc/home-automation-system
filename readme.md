@@ -29,8 +29,9 @@ A home automation system with wireless sensors, actuators and a gateway to contr
     1. Wireless sensors must have 2+ years lifespan
     
 # Market analysis:  
-	The team gathered information about microprocessors with wireless interfaces. Here's the result:
-    ![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
+The team gathered information about microprocessors with wireless interfaces. Here's the result:  
+
+![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
 	
 # Solution:
     
