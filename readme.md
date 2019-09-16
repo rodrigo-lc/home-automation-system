@@ -33,9 +33,7 @@ The team gathered information about microprocessors with wireless interfaces. He
 
 ![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
 	
-# Solution:
-    
-# solution/hardware requirements
+# Solutions:
 * **BLE/WI-FI Gateway**
   - ESP32-CAM module
     - ESP-IDF
@@ -58,10 +56,10 @@ The team gathered information about microprocessors with wireless interfaces. He
   - Relay with normally closed phase
 
 
-# system datapath
+# System datapath
   ![System Diagram](https://i.imgur.com/wHgt4r0.png)
   
-# tools
+# Tools
   - 1x ESP32-CAM module
   - 3x ESP32-01 module
   - 1x Segger J-Link
@@ -70,6 +68,6 @@ The team gathered information about microprocessors with wireless interfaces. He
   - 1x AC 220V/DC 5V converter
   - 1x Relay 5V
  
-# contributors
+# Contributors
 Rodrigo Belisário Ramos (rodbelisario)<br/>Rodigo Luiz da Costa (rodrigo-lc)<br/>Tarcis Aurélio Becher (tarciszera)
 
