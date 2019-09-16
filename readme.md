@@ -29,12 +29,11 @@ A home automation system with wireless sensors, actuators and a gateway to contr
     1. Wireless sensors must have 2+ years lifespan
     
 # Market analysis:  
-	The team gathered information about microprocessors with wireless interfaces. Here's the result:
-    ![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
+The team gathered information about microprocessors with wireless interfaces. Here's the result:  
+
+![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
 	
-# Solution:
-    
-# solution/hardware requirements
+# Solutions:
 * **BLE/WI-FI Gateway**
   - ESP32-CAM module
     - ESP-IDF
@@ -57,10 +56,10 @@ A home automation system with wireless sensors, actuators and a gateway to contr
   - Relay with normally closed phase
 
 
-# system datapath
+# System datapath
   ![System Diagram](https://i.imgur.com/wHgt4r0.png)
   
-# tools
+# Tools
   - 1x ESP32-CAM module
   - 3x ESP32-01 module
   - 1x Segger J-Link
@@ -69,6 +68,6 @@ A home automation system with wireless sensors, actuators and a gateway to contr
   - 1x AC 220V/DC 5V converter
   - 1x Relay 5V
  
-# contributors
+# Contributors
 Rodrigo Belisário Ramos (rodbelisario)<br/>Rodigo Luiz da Costa (rodrigo-lc)<br/>Tarcis Aurélio Becher (tarciszera)
 
