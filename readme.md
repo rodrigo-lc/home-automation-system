@@ -24,6 +24,7 @@ A home automation system with wireless sensors, actuators and a gateway to contr
     3. Open/closed window and door sensors 
     4. Wireless switches (smart outlets)
 	5. Motor driver to control doors and shutters
+    5. The system must have an real time clock to provide time and date logging
 
 6. **Power consumption**
     1. Wireless sensors must have 2+ years lifespan
