@@ -5,3 +5,11 @@ There's some cloud services, and the one we wanna use is the IoT services that c
 [AWS understanding](https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html)
 
 "AWS IoT enables Internet-connected devices to connect to the AWS Cloud and lets applications in the cloud interact with Internet-connected devices."
+
+for esp 32, there's an SDK from the company 
+
+https://github.com/espressif/esp-aws-iot
+
+for the developing enviroment, 
+
+https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html#get-started-get-esp-idf
