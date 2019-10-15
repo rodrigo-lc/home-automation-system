@@ -1,2 +1,0 @@
-m0 or m0+
-BLE physical interface
