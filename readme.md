@@ -5,25 +5,26 @@ A home automation system with wireless sensors, actuators and a gateway to contr
 1. **Access control**
     1. An *access control* with face recognition (e.g.: opening a 12V electric lock)
     2. A register interface, enabling access by face recognition for multiple users
+    3. A datalog containing a list of previous access events (valid, invalid and panic) with the respective time and date
     
 2. **Interface**
     1. A web interface for sensor data monitoring
     2. A web interface providing the access events datalog and sensor status
     3. A local data interface containing the access events datalog
   
-3. **Data security**
-    1. A datalog containing a list of previous access events (valid, invalid and panic) with the respective time and date
-    2. Encrypted data in the web server
+3. **Data security** 
+    1. Encrypted data in the web server
     
 4. **Wireless network**
     1. The wireless sensors must communicate with a gateway their respectives states and sensors values
    
 5. **Monitors and actuators**
     1. Camera (for face recognition/access control)
-    2. Temperature sensors
-    3. Open/closed window and door sensors 
-    4. Wireless switches (smart outlets)
-	5. Motor driver to control doors and shutters
+    2. Wireless temperature sensors (battery) 
+    3. Opened/closed window and door sensors 
+    4. Smart switches (smart outlets)
+    5. Motor driver to control doors and shutters
+    6. The system must have an real time clock to provide time and date logging
 
 6. **Power consumption**
     1. Wireless sensors must have 2+ years lifespan
