@@ -1,0 +1,3 @@
+[submodule "has-aws-iot-esp32"]
+	path = has-aws-iot-esp32
+	url = https://github.com/tarciszera/has-aws-iot-esp32.git
