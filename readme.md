@@ -33,7 +33,61 @@ A home automation system with wireless sensors, actuators and a gateway to contr
 The team gathered information about microprocessors with wireless interfaces. Here's the result:  
 
 ![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
-	
+
+# Diagrama de blocos do sistema
+  ![System Diagram](https://i.imgur.com/wHgt4r0.png)
+
+# Servidor Web
+
+Para a realização do projeto é necessária a utilização de um servidor web, onde serão armazenados os dados do sistema (valores dos sensores, imagens, etc). Alguns problemas giram em torno disso:
+
+- Segurança no envio e recebimento dos dados e no servidor utilizado
+- Armazenamento e acesso dos dados, onde fazer e como fazer?
+- Tempo de desenvolvimento desse sistema
+- Custo operacional
+
+Como o projeto é de curto prazo e com equipe pequena sem expertise no assunto, a melhor solução foi encontrar um servidor web pronto, onde paga-se apenas pelo serviço utilizado, fazendo com que a equipe ganhe tempo para se preocupar com outras peculiaridades do projeto.
+
+Foi feita uma pesquisa sobre alguma empresa que poderia disponibilizar esse tipo de serviço de base de dados online com algum serviço de acesso e as mais populares encontradas atualmente foram:
+
+- AWS
+- Microsoft Azure
+- Google cloud
+
+Cada um deles tem vários serviços web diferentes, que por sua vez podem ser integrados dentro da plataforma de cada fornecedor. Neste [link](https://intellipaat.com/blog/aws-vs-azure-vs-google-cloud/) há um vídeo que mostra diferenças básicas nos serviços, incluindo popularidade, variedade de serviços, preços, etc. 
+
+![](http://i.imgur.com/vUvnjrz.png)
+
+Estudando um pouco as empresas, e também o material disponível pela [espressif](https://github.com/espressif) foi possível constatar que tanto a AWS quanto o Microsoft Azure atendiam os nossos requisitos de serviços e também tinham algum tipo de material pronto para aceleração do desenvolvimento do projeto á um preço parecido. Os fatores que levaram a uma decisão foram:
+
+- **Documentação**
+  - O serviço com a melhor documentação, usualmente, torna o tempo de desenvolvimento mais rápido
+- **Usabilidade**
+  - Com uma boa usabilidade, o serviço permite que a equipe se concentre com o desenvolvimento de outras partes do projeto sem ter que se preocupar tanto em como tornar o serviço utilizavel
+- **Popularidade**
+  - Aprender a utilizar uma ferramenta popular facilita a realização de futuros projetos que tem mais chances de utilizar essa mesma ferramenta
+
+Nesses quisitos o serviço da Amazon tem um pouco de vantagem em comparação com o serviço da Microsoft, fazendo com que esta seja a escolha para nosso projeto.
+
+## AWS
+
+A [AWS](https://aws.amazon.com/pt/) é uma plataforma que permite os usuários a acessarem vários serviços diferentes dessa plataforma, permitindo também a integração desses serviços.
+
+![](http://i.imgur.com/Gaz85Jx.png)
+
+Dentre esses serviços, os serviços que serão utilizados serão o AWS IoT (Internet das coisas) e o DynamoDB (Banco de dados). A escolha desses serviços está intrínsecamente ligada com os exemplos disponibilizados pela [espressif](https://github.com/espressif/esp-aws-iot) que disponibiliza um exemplo com uma implementação pronta para o serviço MQQT do [AWS IoT](https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/aws-iot-how-it-works.html) que por sua vez pode ser integrado diretamente através de regras com a base de dados DynamoDB.
+
+![](http://i.imgur.com/yJqbBqW.png)
+
+Primeiramente para a utilização de serviços da amazon, primeiramente deve-se ter uma conta. E para isso utilizamos o AWS Educate que é uma conta na Amazon fornecida por uma parceria da instituição de ensino com a plataforma que disponibiliza alguns serviços e créditos para utilização de serviços com o intuito de familiarizar o estudante com as ferramentas.
+
+## Espressif AWS IoT
+
+Para a utilização do ESP-32 em conjunto com os serviços da Amazon, há um repositório fornecido pela empresa com um tutorial de como criar um dispositivo remoto na AWS e certificar o ESP-32 como esse dispositivo. Após isto, o exemplo fornecido pela espressif pode ser compilado e gravado no microcontrolador, em conjunto com a própria documentação do ESP-32.
+
+Após todo o procedimento descrito anteriormente o microcontrolador, através de uma rede wifi manda uma requisição de escrita no MQQT client da AWS IoT, que por sua vez escreve no mesmo podendo ser observado na própria plataforma do AWS IoT.
+
+![](http://i.imgur.com/5496wEx.png)	
 # Solutions:
 * **BLE/WI-FI Gateway**
   - ESP32-CAM module
@@ -56,10 +110,6 @@ The team gathered information about microprocessors with wireless interfaces. He
   - 220Vac-5Vdc powered
   - Relay with normally closed phase
 
-
-# System datapath
-  ![System Diagram](https://i.imgur.com/wHgt4r0.png)
-  
 # Tools
   - 1x ESP32-CAM module
   - 3x ESP32-01 module
