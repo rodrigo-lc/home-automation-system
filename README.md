@@ -35,7 +35,7 @@ The team gathered information about microprocessors with wireless interfaces. He
 ![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
 
 # Diagrama de blocos do sistema
-  ![System Diagram](https://i.imgur.com/wHgt4r0.png)
+  ![System Diagram](https://imgur.com/a/pe8wrF2)
 
 # Servidor Web
 
