@@ -2,4 +2,5 @@
 **/logs/examples
 **/logs
 **/build
-
+**/extra_components
+**.txt

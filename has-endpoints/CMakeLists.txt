@@ -3,4 +3,5 @@
 cmake_minimum_required(VERSION 3.5)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(occupancy_sensor)
+set (EXTRA_COMPONENT_DIRS "extra_components")
+project(has-endpoints)
