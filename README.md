@@ -93,6 +93,8 @@ Após todo o procedimento descrito anteriormente o microcontrolador, através de
 
 O esp 32 é um microcontrolador relativamente barato com GPIOs, ADC, periférico wifi e BLE. Associado a isso, ele também tem baixo consumo de energia, sendo uma boa escolha de baixo de custo para aplicações IoT. Por esses motivos esse foi o microcontrolador escolhido para fazer o projeto.
 
+![](docs/img/esp-wroom32.jpg)
+
 [Especificações](https://www.filipeflop.com/produto/modulo-wifi-esp32-bluetooth/#tab-blogrelacionados):
 – CPU: Xtensa® Dual-Core 32-bit LX6
 – ROM: 448 KBytes
