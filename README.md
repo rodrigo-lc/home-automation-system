@@ -140,7 +140,13 @@ Nesse caso existem 3 mensagens possíveís:
 O módulo sensor trabalha com GPIOs e ADCs para o tratamento de dados de sensores analógicos e digitais. Para a exemplificação de ambos, foram utilizados:
 
 -   LM35 (Analógico)
--   JSN-SR04T (Digital)
+-   E18D80NK (Digital)
+
+Para a adequação do sinal do LM35 na porta do ADC foi utlizado um circuito passa baixa com ganho demonstrado na próxima figura:
+
+![](http://i.imgur.com/HRRy3G1.png)
+
+De forma parecida com o módulo do atuador, o módulo do sensor envia mensagens com os valores dos sensores, e essas mensagens podem ser armazenadas em um serviço de banco de dados da aws através de [regras](https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/iot-ddb-rule.html) aplicadas no serviço de IoT. Essas regras que manipulam o banco de dados segundo algum comando escrito em um tópico especifico.
 
 # Solutions:
 * **BLE/WI-FI Gateway**
