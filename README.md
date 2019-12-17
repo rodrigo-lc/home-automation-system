@@ -221,7 +221,11 @@ A seguir algumas imagens do módulo, este alimentado a bateria
   
 # Considerações finais
 
-Para a prova dos conceitos os resultados atigiram um nível satisfatório, porém ficou em falta uma melhor interface com o usuário 
+Todos os módulos, mesmo tendo funções bem diferentes se comunicavam com a núvem, tanto para envio quanto recepção dos dados, além de suas funcionalidades locais. O sistema como um todo se integrava de forma simples e modular, uma vez feito de desenvolvimento da parte de IoT, esta poderia ser replicada para qualquer outro tipo de funcionalidade.
+
+Os dados adquiridos pelo sensor de temperatura foram escritos numa tabela do banco de dados da amazon para possível acesso das informações posteriormente.
+
+No porteiro (Módulo camera) é feito processamento de imagem, com cadastro e reconhecimento dos rostos cadastrados funcionando em tempo real, mandando informações a respeito desse reconhecimento para a internet atingindo os requisitos do projeto.
 
   
 # Contribuições
