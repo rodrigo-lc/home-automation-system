@@ -153,7 +153,12 @@ De forma parecida com o módulo do atuador, o módulo do sensor envia mensagens 
 ![](http://i.imgur.com/b0Co8fi.png)
 
 
+A seguir algumas imagens do módulo, este alimentado a bateria
 
+
+
+![](http://i.imgur.com/q6ELyZh.png)
+![](http://i.imgur.com/xzrGe74.png)
 
 # Solutions:
 * **BLE/WI-FI Gateway**
