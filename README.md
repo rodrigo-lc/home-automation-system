@@ -116,39 +116,57 @@ O processamento de dados é baseado em dois frameworks [esp-who](https://github.
 
 ## Módulo atuador
 
-O módulo atuador é responsável por ligar um relé. Esse relé funciona como chave de uma tomada, mas poderia ser qualquer atuador digital
+O módulo atuador é responsável por ligar um relé. Esse relé funciona como chave de uma tomada no nosso caso. A seguir duas imagens mostrando o módulo.
 
-# Solutions:
-* **BLE/WI-FI Gateway**
-  - ESP32-CAM module
-    - ESP-IDF
-      - FreeRTOS 8 Espressif's fork
-    - ESP-FACE
-    - ESP-WHO
-    - Azure-IoT Espressif API
-    
-* **Wireless BLE sensors**
-  - Battery powered
-  - Espressif'S ESP32 microcontroller
-    - Two cores 
-  - **Must design hardware module with ESP32 + sensors**
-  - Two basic sensors:
-    - ADC sensor for temperature reading (e.g: LM35)
-    - GPIO ON/OFF sensor for open/closed door event
-  - Transistors controlling current drain in sensors - "sensor sleep mode"
-* **Connected BLE actuators**
-  - 220Vac-5Vdc powered
-  - Relay with normally closed phase
+![](http://i.imgur.com/QQb5Upu.png)
 
-# Tools
-  - 1x ESP32-CAM module
-  - 3x ESP32-01 module
+![](http://i.imgur.com/Z5VsBkE.png)
+
+Este módulo utiliza uma fonte retificadora de 220 AC para 5V DC, um ESP-32 e um Relé de 220V/10A.
+
+O funcionamento é bastante simple, este módulo está inscrito em um tópico MQTT. Toda vez que algo é publicado neste tópico, o módulo analisa a mensagem e toma uma ação dependendo do conteúdo.
+
+Nesse caso existem 3 mensagens possíveís:
+
+-   Acesso concedido!
+    Ativa o relé por um pequeno instante de tempo simulando uma tranca e depois o desativa
+-   Liga tomada
+    Ativa o relé
+-   Desliga tomada
+    Desativa o relé
+
+# Módulo sensor
+
+O módulo sensor trabalha com GPIOs e ADCs para o tratamento de dados de sensores analógicos e digitais. Para a exemplificação de ambos, foram utilizados:
+
+-   LM35 (Analógico)
+-   E18D80NK (Digital)
+
+Para a adequação do sinal do LM35 na porta do ADC foi utlizado um circuito passa baixa com ganho demonstrado na próxima figura:
+
+![](http://i.imgur.com/HRRy3G1.png)
+
+De forma parecida com o módulo do atuador, o módulo do sensor envia mensagens com os valores dos sensores, e essas mensagens podem ser armazenadas em um serviço de banco de dados da aws através de [regras](https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/iot-ddb-rule.html) aplicadas no serviço de IoT. Essas regras que manipulam o banco de dados segundo algum comando escrito em um tópico especifico. A seguir imagens da implementação:
+
+![](http://i.imgur.com/PVxH9lD.png)
+![](http://i.imgur.com/b0Co8fi.png)
+
+A seguir algumas imagens do módulo, este alimentado a bateria
+
+![](http://i.imgur.com/q6ELyZh.png)
+![](http://i.imgur.com/xzrGe74.png)
+
+# Ferramentas
+  - 1x ESP32-CAM 
+  - 2x ESP32-01 
   - 1x Segger J-Link
-  - 1x JSN-SR04T
+  - 1x E18D80NK
   - 1x LM35
-  - 1x AC 220V/DC 5V converter
-  - 1x Relay 5V
- 
-# Contributors
+  - 1x LM324
+  - 1x AC 220V/DC 5V 
+  - 1x Relé 5V
+  
+  
+# Contribuições
 Rodrigo Belisário Ramos (rodbelisario)<br/>Rodigo Luiz da Costa (rodrigo-lc)<br/>Tarcis Aurélio Becher (tarciszera)
 
