@@ -135,6 +135,13 @@ Nesse caso existem 3 mensagens possíveís:
 -   Desliga tomada
     Desativa o relé
 
+# Módulo sensor
+
+O módulo sensor trabalha com GPIOs e ADCs para o tratamento de dados de sensores analógicos e digitais. Para a exemplificação de ambos, foram utilizados:
+
+-   LM35 (Analógico)
+-   JSN-SR04T (Digital)
+
 # Solutions:
 * **BLE/WI-FI Gateway**
   - ESP32-CAM module
