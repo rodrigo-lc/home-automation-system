@@ -64,20 +64,23 @@
 
 
 #define GPIO_OUTPUT_IO_0    	2 // Board LED
-#define GPIO_OUTPUT_IO_1    	17 
+#define GPIO_OUTPUT_IO_1    	14 // BJT atuador
 #define GPIO_OUTPUT_PIN_SEL  	((1ULL<<GPIO_OUTPUT_IO_0) | (1ULL<<GPIO_OUTPUT_IO_1))
 
-#define GPIO_INPUT_IO_0     	16
+#define GPIO_INPUT_IO_0     	12
 #define GPIO_INPUT_PIN_SEL 		(1ULL<<GPIO_INPUT_IO_0)
 
 #define ESP_INTR_FLAG_DEFAULT 	0
-#define N_MULTISAMPLES			32
+#define N_MULTISAMPLES			4
 #define N_STRING				50
-#define DEFAULT_VREF    		1100        
+#define DEFAULT_VREF    		1100     
+#define AOP_GAIN	2   
 
 static char mqtt_string[50];
-///#define TEMPERATURE_SENSOR
+uint8_t aws_flag = 0;
+#define TEMPERATURE_SENSOR
 #define OCCUPANCY_SENSOR
+//#define RELAY_ACTUATOR
 #define IOT
 
 #if defined (IOT)
@@ -93,7 +96,7 @@ static xQueueHandle gpio_evt_queue = NULL;
 void occupancy_sensor_init(void);
 void temperature_sensor_init(void);
 void internal_temperature_sensor_init(void);
-
+void relay_actuator_init(void);
 
 /*
  * Interrupts
@@ -106,6 +109,7 @@ static void IRAM_ATTR gpio_isr_handler(void* arg) {
 /*
  * FreeRTOS tasks
  */
+
 static void occupancy_sensor_task(void* arg) {
     static uint32_t io_num;
     static uint32_t actual_io_value = 0;
@@ -119,12 +123,13 @@ static void occupancy_sensor_task(void* arg) {
 				//printf("GPIO[%d] intr, val: %d\r\n", io_num, gpio_get_level(io_num));
 				if(actual_io_value) { // EVENT1 - Without presence	
 					printf("Porta ABERTA!\r\n");
-					sprintf(mqtt_string, "Porta ABERTA!\r\n");
+					sprintf(mqtt_string, "Porta ABERTA!");
 				}
 				else { // EVENT2 - Presence
 					printf("Porta FECHADA\r\n");
-					sprintf(mqtt_string, "Porta FECHADA!\r\n");
+					sprintf(mqtt_string, "Porta FECHADA!");
 				}
+				aws_flag = 1;
 			} // if(actual_io_value == previous_io_value)
     	}
 		vTaskDelay(100 / portTICK_RATE_MS);
@@ -143,7 +148,7 @@ static void temperature_sensor_task(void* arg) {
 	adc_chars_temperature = calloc(1, sizeof(esp_adc_cal_characteristics_t));
     val_type_temperature = esp_adc_cal_characterize(
 		ADC_UNIT_1, ADC_ATTEN_DB_0, ADC_WIDTH_BIT_12, DEFAULT_VREF, adc_chars_temperature);
-
+	//esp_sleep_enable_timer_wakeup(5000000); // Tempo em us
 	for(;;) {
 		adc1_md = 0;
 		for(uint8_t i = 0; i < N_MULTISAMPLES; i++) {
@@ -151,13 +156,15 @@ static void temperature_sensor_task(void* arg) {
 			adc1_md += adc1_raw[i];
 		}
 		adc1_md /= N_MULTISAMPLES;
-		adc1_voltage_raw = esp_adc_cal_raw_to_voltage(adc1_get_raw(ADC1_CHANNEL_7), adc_chars_temperature);
-		adc1_voltage_md = esp_adc_cal_raw_to_voltage(adc1_md, adc_chars_temperature);
-		temperature = (float)(((float)adc1_voltage_md / 10.0) + (adc1_voltage_md / 100)) - 2;
+		adc1_voltage_raw = esp_adc_cal_raw_to_voltage(adc1_get_raw(ADC1_CHANNEL_7), adc_chars_temperature)/AOP_GAIN;
+		adc1_voltage_md = esp_adc_cal_raw_to_voltage(adc1_md, adc_chars_temperature)/AOP_GAIN;
+		temperature = ((float)(((float)adc1_voltage_md / 10.0) + (adc1_voltage_md / 100.0)) - 2);
 		
 		printf("ADC1_RAW=%umV\tADC1_MED=%umV\tT=%.1f°C\r\n", adc1_voltage_raw, adc1_voltage_md, temperature);
 		sprintf(mqtt_string, "ADC1_RAW=%umV\tADC1_MED=%umV\tT=%.1f°C\r\n", adc1_voltage_raw, adc1_voltage_md, temperature);
-		vTaskDelay(5000 / portTICK_RATE_MS);
+		aws_flag = 1;
+		vTaskDelay(5000 / portTICK_RATE_MS); // Para não ter problema de WDT na task idle
+		
 	}
 }
 
@@ -181,6 +188,24 @@ static void internal_temperature_sensor_task(void* arg) {
 		printf("ADC_HALL=%umV\t%u\r\n", adc_hall, adc_hall_voltage);
 		sprintf(mqtt_string, "ADC_HALL=%umV\t%u\r\n", adc_hall, adc_hall_voltage);
 		vTaskDelay(1000 / portTICK_RATE_MS);
+		//aws_flag = 1;
+	}
+}
+
+
+static void relay_actuator_task(void* arg) {
+	
+	
+	for(;;) {
+
+		/*
+		gpio_set_level(GPIO_OUTPUT_IO_1, 0);
+		vTaskDelay(300 / portTICK_RATE_MS);
+		gpio_set_level(GPIO_OUTPUT_IO_1, 1);
+		vTaskDelay(300 / portTICK_RATE_MS);
+		*/
+		vTaskDelay(10000 / portTICK_RATE_MS);
+
 	}
 }
  
@@ -211,7 +236,7 @@ void app_main() {
 	// Suspends itself
 	vTaskSuspend(NULL);
 	// Should never get here
-	printf("ERROR");
+	printf("ERROR: app_main did not suspended itself!");
 	while(1);
 }
 
@@ -221,7 +246,7 @@ void app_main() {
  */
 void occupancy_sensor_init(void) {
 	gpio_config_t gpio_conf;
-	/*
+	
 	//disable interrupt
 	gpio_conf.intr_type = GPIO_PIN_INTR_DISABLE;
 	//set as output mode
@@ -234,7 +259,7 @@ void occupancy_sensor_init(void) {
 	gpio_conf.pull_up_en = 0;
 	//configure GPIO with the given settings
 	gpio_config(&gpio_conf);
-	*/
+	
 	//interrupt of rising edge
 	gpio_conf.intr_type = GPIO_PIN_INTR_POSEDGE;
 	//bit mask of the pins, use GPIO4/5 here
@@ -242,7 +267,7 @@ void occupancy_sensor_init(void) {
 	//set as input mode
 	gpio_conf.mode = GPIO_MODE_INPUT;
 	//disable pull-up mode
-	gpio_conf.pull_up_en = 0;
+	gpio_conf.pull_up_en = 1;
 	//disable pull-up mode
 	gpio_conf.pull_down_en = 0;
 	gpio_config(&gpio_conf);
@@ -268,4 +293,27 @@ void temperature_sensor_init(void) {
 
 void internal_temperature_sensor_init(void) {
 	xTaskCreate(internal_temperature_sensor_task, "INTERNAL_TEMPERATURE_SENSOR_TASK", 2048, NULL, 1, NULL);
+}
+
+ void relay_actuator_init(void) {
+	gpio_config_t gpio_conf;
+	
+	//disable interrupt
+	gpio_conf.intr_type = GPIO_PIN_INTR_DISABLE;
+	//set as output mode
+	gpio_conf.mode = GPIO_MODE_OUTPUT;
+	//bit mask of the pins that you want to set,e.g.GPIO18/19
+	gpio_conf.pin_bit_mask = GPIO_OUTPUT_PIN_SEL;
+	//disable pull-down mode
+	gpio_conf.pull_down_en = 0;
+	//disable pull-up mode
+	gpio_conf.pull_up_en = 0;
+	//configure GPIO with the given settings
+	gpio_config(&gpio_conf);
+
+	gpio_set_level(GPIO_OUTPUT_IO_1, 0);
+	//start gpio task
+    //xTaskCreate(relay_actuator_task, "RELAY_ACTUATOR_TASK", 2048, NULL, 1, NULL);
+	
+	
 }

@@ -1,4 +1,6 @@
 static const char *TAG = "subpub";
+static char* string_global = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+char* string_ref = "qualquer coisa";
 
 /* The examples use simple WiFi configuration that you can set via
    'make menuconfig'.
@@ -84,6 +86,12 @@ void iot_subscribe_callback_handler(AWS_IoT_Client *pClient, char *topicName, ui
                                     IoT_Publish_Message_Params *params, void *pData) {
     ESP_LOGI(TAG, "Subscribe callback");
     ESP_LOGI(TAG, "%.*s\t%.*s", topicNameLen, topicName, (int) params->payloadLen, (char *)params->payload);
+
+    //strcpy( string_global, (char *)params->payload;
+    string_global =  (char *)params->payload;
+    string_global[(int) params->payloadLen] = '\0';
+    //printf("String do tarcis: %s", string_global);
+
 }
 
 void disconnectCallbackHandler(AWS_IoT_Client *pClient, void *data) {
@@ -197,7 +205,7 @@ void aws_iot_task(void *param) {
         abort();
     }
 
-    const char *TOPIC = "test_topic/esp32";
+    const char *TOPIC = "has001/sensors2";
     const int TOPIC_LEN = strlen(TOPIC);
 
     ESP_LOGI(TAG, "Subscribing...");
@@ -221,15 +229,37 @@ void aws_iot_task(void *param) {
             continue;
         }
         ESP_LOGI(TAG, "Stack remaining for task '%s' is %d bytes", pcTaskGetTaskName(NULL), uxTaskGetStackHighWaterMark(NULL));
-        vTaskDelay(2000 / portTICK_RATE_MS);
+        vTaskDelay(1000 / portTICK_RATE_MS);
 
-        sprintf(cPayload, "%s : %d ", mqtt_string, i++);
-        paramsQOS1.payloadLen = strlen(cPayload);
-        rc = aws_iot_mqtt_publish(&client, TOPIC, TOPIC_LEN, &paramsQOS1);
-        if (rc == MQTT_REQUEST_TIMEOUT_ERROR) {
-            ESP_LOGW(TAG, "QOS1 publish ack not received.");
-            rc = SUCCESS;
+#if defined (RELAY_ACTUATOR)
+
+        if(!strcmp(string_global, "Acesso concedido!")) { // Caso esp-cam OK
+            gpio_set_level(GPIO_OUTPUT_IO_1, 1);
+            vTaskDelay(100 / portTICK_RATE_MS);
+            gpio_set_level(GPIO_OUTPUT_IO_1, 0);
+            printf("ACESSO!");
         }
+        else  if(!strcmp(string_global, "Liga tomada")) { // Caso outros devices
+            gpio_set_level(GPIO_OUTPUT_IO_1, 1); 
+            printf("LIGADO");
+        }
+        else  if(!strcmp(string_global, "Desliga tomada")) { // Caso outros devices
+            gpio_set_level(GPIO_OUTPUT_IO_1, 0); 
+            printf("DESLIGADO");
+        }
+        string_global = string_ref;
+#else 
+        if(aws_flag) {
+            sprintf(cPayload, "%s : %d", mqtt_string, i++);
+            paramsQOS1.payloadLen = strlen(cPayload);
+            rc = aws_iot_mqtt_publish(&client, TOPIC, TOPIC_LEN, &paramsQOS1);
+            if (rc == MQTT_REQUEST_TIMEOUT_ERROR) {
+                ESP_LOGW(TAG, "QOS1 publish ack not received.");
+                rc = SUCCESS;
+            }
+            aws_flag = 0;
+        }
+#endif
     }
 
     ESP_LOGE(TAG, "An error occurred in the main loop.");
@@ -255,4 +285,3 @@ static void initialise_wifi(void)
     ESP_ERROR_CHECK( esp_wifi_set_config(WIFI_IF_STA, &wifi_config) );
     ESP_ERROR_CHECK( esp_wifi_start() );
 }
-

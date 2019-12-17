@@ -1,3 +1,7 @@
 [submodule "has-aws-iot-esp32"]
 	path = has-aws-iot-esp32
 	url = https://github.com/tarciszera/has-aws-iot-esp32.git
+[submodule "has-camera"]
+	path = has-camera
+	url = https://github.com/rodbelisario/has-camera
+	branch = master
