@@ -89,6 +89,30 @@ Após todo o procedimento descrito anteriormente o microcontrolador, através de
 
 ![](http://i.imgur.com/5496wEx.png)	
 
+# ESP-32
+
+O esp 32 é um microcontrolador relativamente barato com GPIOs, ADC, periférico wifi e BLE. Associado a isso, ele também tem baixo consumo de energia, sendo uma boa escolha de baixo de custo para aplicações IoT. Por esses motivos esse foi o microcontrolador escolhido para fazer o projeto.
+
+[Especificações](https://www.filipeflop.com/produto/modulo-wifi-esp32-bluetooth/#tab-blogrelacionados):
+– CPU: Xtensa® Dual-Core 32-bit LX6
+– ROM: 448 KBytes
+– RAM: 520 Kbytes
+– Flash: 4 MB
+– Clock máximo: 240MHz
+– Wireless padrão 802.11 b/g/n
+– Conexão Wifi 2.4Ghz (máximo de 150 Mbps)
+– Antena embutida
+– Conector micro-usb
+– Wi-Fi Direct (P2P), P2P Discovery, P2P Group Owner mode e P2P Power Management
+– Modos de operação: STA/AP/STA+AP
+– Bluetooth BLE 4.2
+– Portas GPIO: 11
+– GPIO com funções de PWM, I2C, SPI, etc
+– Tensão de operação: 4,5 ~ 9V
+– Taxa de transferência: 110-460800bps
+– Suporta Upgrade remoto de firmware
+– Conversor analógico digital (ADC)
+
 # Modulos desenvolvidos
 
 Há basicamente 3 módulos desenvolvidos no projeto:
@@ -135,7 +159,7 @@ Nesse caso existem 3 mensagens possíveís:
 -   Desliga tomada
     Desativa o relé
 
-# Módulo sensor
+## Módulo sensor
 
 O módulo sensor trabalha com GPIOs e ADCs para o tratamento de dados de sensores analógicos e digitais. Para a exemplificação de ambos, foram utilizados:
 
@@ -156,7 +180,9 @@ A seguir algumas imagens do módulo, este alimentado a bateria
 ![](http://i.imgur.com/q6ELyZh.png)
 ![](http://i.imgur.com/xzrGe74.png)
 
-# Ferramentas
+
+
+# Ferramentas utilizadas
   - 1x ESP32-CAM 
   - 2x ESP32-01 
   - 1x Segger J-Link
