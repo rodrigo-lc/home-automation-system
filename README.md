@@ -146,7 +146,14 @@ Para a adequação do sinal do LM35 na porta do ADC foi utlizado um circuito pas
 
 ![](http://i.imgur.com/HRRy3G1.png)
 
-De forma parecida com o módulo do atuador, o módulo do sensor envia mensagens com os valores dos sensores, e essas mensagens podem ser armazenadas em um serviço de banco de dados da aws através de [regras](https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/iot-ddb-rule.html) aplicadas no serviço de IoT. Essas regras que manipulam o banco de dados segundo algum comando escrito em um tópico especifico.
+De forma parecida com o módulo do atuador, o módulo do sensor envia mensagens com os valores dos sensores, e essas mensagens podem ser armazenadas em um serviço de banco de dados da aws através de [regras](https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/iot-ddb-rule.html) aplicadas no serviço de IoT. Essas regras que manipulam o banco de dados segundo algum comando escrito em um tópico especifico. A seguir imagens da implementação:
+
+
+![](http://i.imgur.com/PVxH9lD.png)
+![](http://i.imgur.com/b0Co8fi.png)
+
+
+
 
 # Solutions:
 * **BLE/WI-FI Gateway**
