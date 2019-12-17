@@ -81,14 +81,6 @@ Dentre esses serviços, os serviços que serão utilizados serão o AWS IoT (Int
 
 Primeiramente para a utilização de serviços da amazon, primeiramente deve-se ter uma conta. E para isso utilizamos o AWS Educate que é uma conta na Amazon fornecida por uma parceria da instituição de ensino com a plataforma que disponibiliza alguns serviços e créditos para utilização de serviços com o intuito de familiarizar o estudante com as ferramentas.
 
-## Espressif AWS IoT
-
-Para a utilização do ESP-32 em conjunto com os serviços da Amazon, há um repositório fornecido pela empresa com um tutorial de como criar um dispositivo remoto na AWS e certificar o ESP-32 como esse dispositivo. Após isto, o exemplo fornecido pela espressif pode ser compilado e gravado no microcontrolador, em conjunto com a própria documentação do ESP-32.
-
-Após todo o procedimento descrito anteriormente o microcontrolador, através de uma rede wifi manda uma requisição de escrita no MQQT client da AWS IoT, que por sua vez escreve no mesmo podendo ser observado na própria plataforma do AWS IoT.
-
-![](http://i.imgur.com/5496wEx.png)	
-
 # ESP-32
 
 O esp 32 é um microcontrolador relativamente barato com GPIOs, ADC, periférico wifi e BLE. Associado a isso, ele também tem baixo consumo de energia, sendo uma boa escolha de baixo de custo para aplicações IoT. Por esses motivos esse foi o microcontrolador escolhido para fazer o projeto.
@@ -96,23 +88,41 @@ O esp 32 é um microcontrolador relativamente barato com GPIOs, ADC, periférico
 ![](docs/img/esp-wroom32.jpg)
 
 [Especificações](https://www.filipeflop.com/produto/modulo-wifi-esp32-bluetooth/#tab-blogrelacionados):
+
 – CPU: Xtensa® Dual-Core 32-bit LX6
+
 – ROM: 448 KBytes
+
 – RAM: 520 Kbytes
+
 – Flash: 4 MB
+
 – Clock máximo: 240MHz
+
 – Wireless padrão 802.11 b/g/n
+
 – Conexão Wifi 2.4Ghz (máximo de 150 Mbps)
+
 – Antena embutida
+
 – Conector micro-usb
+
 – Wi-Fi Direct (P2P), P2P Discovery, P2P Group Owner mode e P2P Power Management
+
 – Modos de operação: STA/AP/STA+AP
+
 – Bluetooth BLE 4.2
+
 – Portas GPIO: 11
+
 – GPIO com funções de PWM, I2C, SPI, etc
+
 – Tensão de operação: 4,5 ~ 9V
+
 – Taxa de transferência: 110-460800bps
+
 – Suporta Upgrade remoto de firmware
+
 – Conversor analógico digital (ADC)
 
 ## ESP-IDF
@@ -122,11 +132,17 @@ Há um framework de desenvolvimento onde há varias aplicações já implementad
 https://github.com/espressif/esp-idf
 https://docs.espressif.com/projects/esp-idf/en/latest/
 
-Há também um framework dedicado para comunicação com AWS MQTT, este também foi utilizado no desenvolvimento do projeto.
+## [Espressif AWS IoT](https://github.com/espressif/esp-aws-iot)
+
+Para a utilização do ESP-32 em conjunto com os serviços da Amazon, há um repositório fornecido pela empresa com um tutorial de como criar um dispositivo remoto na AWS e certificar o ESP-32 como esse dispositivo. Após isto, o exemplo fornecido pela espressif pode ser compilado e gravado no microcontrolador, em conjunto com a própria documentação do ESP-32.
+
+Após todo o procedimento descrito anteriormente o microcontrolador, através de uma rede wifi manda uma requisição de escrita no MQQT client da AWS IoT, que por sua vez escreve no mesmo podendo ser observado na própria plataforma do AWS IoT.
+
+![](http://i.imgur.com/5496wEx.png)	
 
 https://github.com/espressif/esp-aws-iot
 
-# Modulos desenvolvidos
+# Resultados
 
 Há basicamente 3 módulos desenvolvidos no projeto:
 
@@ -204,6 +220,8 @@ A seguir algumas imagens do módulo, este alimentado a bateria
   - 1x Relé 5V
   
 # Considerações finais
+
+Para a prova dos conceitos os resultados atigiram um nível satisfatório, porém ficou em falta uma melhor interface com o usuário 
 
   
 # Contribuições
