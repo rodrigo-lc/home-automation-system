@@ -1,41 +1,41 @@
 # Home-Automation-System (HAS)
-A home automation system with wireless sensors, actuators and a gateway to control the network and populate an internet server.
+O HAS é um sistema de automação residencial, ao qual existem alguns módulos que se comunicam através de um serviço de núvem.
 
-# Requirements:
-1. **Access control**
-    1. An *access control* with face recognition (e.g.: opening a 12V electric lock)
-    2. A register interface, enabling access by face recognition for multiple users
-    3. A datalog containing a list of previous access events (valid, invalid and panic) with the respective time and date
+Requerimentos:
+1. **Controle de acesso**
+    1. Um *controle de acesso* com reconhecimento de rosto (por exemplo: abrir uma trava elétrica de 12V)
+    2. Uma interface de registro, permitindo acesso por reconhecimento de face para vários usuários
+    3. Um registro de dados contendo uma lista de eventos de acesso anteriores (válidos, inválidos e pânico) com a respectiva hora e data
     
 2. **Interface**
-    1. A web interface for sensor data monitoring
-    2. A web interface providing the access events datalog and sensor status
-    3. A local data interface containing the access events datalog
+    1. Uma interface web para monitoramento de dados do sensor
+    2. Uma interface da web que fornece o registro de dados de eventos de acesso e o status do sensor
+    3. Uma interface de dados local que contém o registro de dados de eventos de acesso
   
-3. **Data security** 
-    1. Encrypted data in the web server
+3. **Segurança dos dados**
+    1. Dados criptografados no servidor web
     
-4. **Wireless network**
-    1. The wireless sensors must communicate with a gateway their respectives states and sensors values
+4. **rede sem fio**
+    1. Os sensores sem fio devem comunicar com um gateway seus respectivos estados e valores de sensores
    
-5. **Monitors and actuators**
-    1. Camera (for face recognition/access control)
-    2. Wireless temperature sensors (battery) 
-    3. Opened/closed window and door sensors 
-    4. Smart switches (smart outlets)
-    5. Motor driver to control doors and shutters
-    6. The system must have an real time clock to provide time and date logging
+5. **Monitores e atuadores**
+    1. Câmera (para reconhecimento de rosto / controle de acesso)
+    2. Sensores de temperatura sem fio (bateria)
+    3. Sensores de janela e porta abertos / fechados
+    4. Switches inteligentes (tomadas inteligentes)
+    5. Motorista para controlar portas e persianas
+    6. O sistema deve ter um relógio de tempo real para fornecer registro de hora e data
 
-6. **Power consumption**
-    1. Wireless sensors must have 2+ years lifespan
+6. **Consumo de energia**
+    1. Os sensores sem fio devem ter mais de 2 anos de vida útil
     
-# Market analysis:  
-The team gathered information about microprocessors with wireless interfaces. Here's the result:  
+# Análise de mercado:
+A equipe reuniu informações sobre microprocessadores com interfaces sem fio. Aqui está o resultado:
 
 ![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
 
 # Diagrama de blocos do sistema
-  ![System Diagram](https://imgur.com/a/pe8wrF2)
+  ![System Diagram](docs/img/project-diagram.png)  
 
 # Servidor Web
 
@@ -88,6 +88,31 @@ Para a utilização do ESP-32 em conjunto com os serviços da Amazon, há um rep
 Após todo o procedimento descrito anteriormente o microcontrolador, através de uma rede wifi manda uma requisição de escrita no MQQT client da AWS IoT, que por sua vez escreve no mesmo podendo ser observado na própria plataforma do AWS IoT.
 
 ![](http://i.imgur.com/5496wEx.png)	
+
+# Modulos desenvolvidos
+
+Há basicamente 3 módulos desenvolvidos no projeto:
+
+-   Camera
+-   Sensores
+-   Atuadores
+
+Sendo cada um desses módulos responsável por algum tipo de operação no sistema.
+
+## Módulo camera
+
+O módulo camera é responsável pelo cadastro de faces e reconhecimento facil do sistema, que por sua vez, ativa um atuador quando reconhecida uma face. A seguir uma imagem do módulo.
+
+![](http://i.imgur.com/mtbfi2w.png)
+
+O processamento de dados é baseado em dois frameworks [esp-who](https://github.com/espressif/esp-who) e [esp-face](https://github.com/espressif/esp-face). O módulo se conecta numa rede wifi, juntamente com um computador que tem uma interface html, onde é possível detectar-se uma pessoa não cadastrada (intruder alert), apertando "enroll face" é possível o cadastro de uma face e então após o cadastro o rosto é detectado como "sample" e quando ocorre uma detecção o módulo envia uma string para o servidor AWS que é lida por um módulo atuador, abrindo a porta de entrada da residencia. A seguir 3 imagens mostrando o processo de cadastramento.
+
+![](http://i.imgur.com/JPnewno.png)
+
+![](http://i.imgur.com/zF3MYnT.png)
+
+![](http://i.imgur.com/haRdEfe.png)
+
 # Solutions:
 * **BLE/WI-FI Gateway**
   - ESP32-CAM module
