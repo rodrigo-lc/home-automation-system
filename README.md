@@ -35,7 +35,7 @@ A equipe reuniu informações sobre microprocessadores com interfaces sem fio. A
 ![Market analysis for microprocessors with wireless interfaces](docs/img/market_analysis.png)  
 
 # Diagrama de blocos do sistema
-  ![System Diagram](docs/img/project-diagram.png)  
+  ![System Diagram](docs/img/block_diagram.jfif)  
 
 # Servidor Web
 
@@ -115,6 +115,17 @@ O esp 32 é um microcontrolador relativamente barato com GPIOs, ADC, periférico
 – Suporta Upgrade remoto de firmware
 – Conversor analógico digital (ADC)
 
+## ESP-IDF
+
+Há um framework de desenvolvimento onde há varias aplicações já implementadas em exemplos, na documentação há todas as informações necessárias para rodar compilar e escrever na flash do microcontrolador
+
+https://github.com/espressif/esp-idf
+https://docs.espressif.com/projects/esp-idf/en/latest/
+
+Há também um framework dedicado para comunicação com AWS MQTT, este também foi utilizado no desenvolvimento do projeto.
+
+https://github.com/espressif/esp-aws-iot
+
 # Modulos desenvolvidos
 
 Há basicamente 3 módulos desenvolvidos no projeto:
@@ -182,8 +193,6 @@ A seguir algumas imagens do módulo, este alimentado a bateria
 ![](http://i.imgur.com/q6ELyZh.png)
 ![](http://i.imgur.com/xzrGe74.png)
 
-
-
 # Ferramentas utilizadas
   - 1x ESP32-CAM 
   - 2x ESP32-01 
@@ -194,6 +203,8 @@ A seguir algumas imagens do módulo, este alimentado a bateria
   - 1x AC 220V/DC 5V 
   - 1x Relé 5V
   
+# Considerações finais
+
   
 # Contribuições
 Rodrigo Belisário Ramos (rodbelisario)<br/>Rodigo Luiz da Costa (rodrigo-lc)<br/>Tarcis Aurélio Becher (tarciszera)
