@@ -116,7 +116,24 @@ O processamento de dados é baseado em dois frameworks [esp-who](https://github.
 
 ## Módulo atuador
 
-O módulo atuador é responsável por ligar um relé. Esse relé funciona como chave de uma tomada, mas poderia ser qualquer atuador digital
+O módulo atuador é responsável por ligar um relé. Esse relé funciona como chave de uma tomada no nosso caso. A seguir duas imagens mostrando o módulo.
+
+![](http://i.imgur.com/QQb5Upu.png)
+
+![](http://i.imgur.com/Z5VsBkE.png)
+
+Este módulo utiliza uma fonte retificadora de 220 AC para 5V DC, um ESP-32 e um Relé de 220V/10A.
+
+O funcionamento é bastante simple, este módulo está inscrito em um tópico MQTT. Toda vez que algo é publicado neste tópico, o módulo analisa a mensagem e toma uma ação dependendo do conteúdo.
+
+Nesse caso existem 3 mensagens possíveís:
+
+-   Acesso concedido!
+    Ativa o relé por um pequeno instante de tempo simulando uma tranca e depois o desativa
+-   Liga tomada
+    Ativa o relé
+-   Desliga tomada
+    Desativa o relé
 
 # Solutions:
 * **BLE/WI-FI Gateway**
