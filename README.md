@@ -113,6 +113,11 @@ O processamento de dados é baseado em dois frameworks [esp-who](https://github.
 
 ![](http://i.imgur.com/haRdEfe.png)
 
+
+## Módulo atuador
+
+O módulo atuador é responsável por ligar um relé. Esse relé funciona como chave de uma tomada, mas poderia ser qualquer atuador digital
+
 # Solutions:
 * **BLE/WI-FI Gateway**
   - ESP32-CAM module
