@@ -148,49 +148,25 @@ Para a adequação do sinal do LM35 na porta do ADC foi utlizado um circuito pas
 
 De forma parecida com o módulo do atuador, o módulo do sensor envia mensagens com os valores dos sensores, e essas mensagens podem ser armazenadas em um serviço de banco de dados da aws através de [regras](https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/iot-ddb-rule.html) aplicadas no serviço de IoT. Essas regras que manipulam o banco de dados segundo algum comando escrito em um tópico especifico. A seguir imagens da implementação:
 
-
 ![](http://i.imgur.com/PVxH9lD.png)
 ![](http://i.imgur.com/b0Co8fi.png)
 
-
 A seguir algumas imagens do módulo, este alimentado a bateria
-
-
 
 ![](http://i.imgur.com/q6ELyZh.png)
 ![](http://i.imgur.com/xzrGe74.png)
 
-# Solutions:
-* **BLE/WI-FI Gateway**
-  - ESP32-CAM module
-    - ESP-IDF
-      - FreeRTOS 8 Espressif's fork
-    - ESP-FACE
-    - ESP-WHO
-    - Azure-IoT Espressif API
-    
-* **Wireless BLE sensors**
-  - Battery powered
-  - Espressif'S ESP32 microcontroller
-    - Two cores 
-  - **Must design hardware module with ESP32 + sensors**
-  - Two basic sensors:
-    - ADC sensor for temperature reading (e.g: LM35)
-    - GPIO ON/OFF sensor for open/closed door event
-  - Transistors controlling current drain in sensors - "sensor sleep mode"
-* **Connected BLE actuators**
-  - 220Vac-5Vdc powered
-  - Relay with normally closed phase
-
-# Tools
-  - 1x ESP32-CAM module
-  - 3x ESP32-01 module
+# Ferramentas
+  - 1x ESP32-CAM 
+  - 2x ESP32-01 
   - 1x Segger J-Link
-  - 1x JSN-SR04T
+  - 1x E18D80NK
   - 1x LM35
-  - 1x AC 220V/DC 5V converter
-  - 1x Relay 5V
- 
-# Contributors
+  - 1x LM324
+  - 1x AC 220V/DC 5V 
+  - 1x Relé 5V
+  
+  
+# Contribuições
 Rodrigo Belisário Ramos (rodbelisario)<br/>Rodigo Luiz da Costa (rodrigo-lc)<br/>Tarcis Aurélio Becher (tarciszera)
 
