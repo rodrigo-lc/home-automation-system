@@ -18,7 +18,7 @@ https://www.youtube.com/watch?v=QVMtEgsxKL0&feature=youtu.be
 3. **Segurança dos dados**
     1. Dados criptografados no servidor web
     
-4. **rede sem fio**
+4. **Rede sem fio**
     1. Os sensores sem fio devem comunicar com um gateway seus respectivos estados e valores de sensores
    
 5. **Monitores e atuadores**
