@@ -182,10 +182,15 @@ O funcionamento é bastante simple, este módulo está inscrito em um tópico MQ
 Nesse caso existem 3 mensagens possíveís:
 
 -   Acesso concedido!
+
     Ativa o relé por um pequeno instante de tempo simulando uma tranca e depois o desativa
+    
 -   Liga tomada
+
     Ativa o relé
+    
 -   Desliga tomada
+
     Desativa o relé
 
 ## Módulo sensor
