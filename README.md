@@ -4,7 +4,7 @@ O HAS é um sistema de automação residencial projetado para conter dispositivo
 ## Vídeo demonstrativo:
 https://www.youtube.com/watch?v=QVMtEgsxKL0&feature=youtu.be
 
-Requisitos de projeto:
+## Requisitos de projeto:
 1. **Controle de acesso**
     1. Um *controle de acesso* com reconhecimento de rosto (por exemplo: abrir uma trava elétrica de 12V)
     2. Uma interface de registro, permitindo acesso por reconhecimento de face para vários usuários
@@ -40,7 +40,7 @@ A equipe reuniu informações sobre microprocessadores com interfaces sem fio. A
 # Diagrama de blocos do sistema
   ![System Diagram](docs/img/block_diagram.jfif)  
 
-# Servidor Web
+## Servidor Web
 
 Para a realização do projeto é necessária a utilização de um servidor web, onde serão armazenados os dados do sistema (valores dos sensores, imagens, etc). Alguns problemas giram em torno disso:
 
