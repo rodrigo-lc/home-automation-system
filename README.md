@@ -39,6 +39,7 @@ A equipe reuniu informações sobre microprocessadores com interfaces sem fio. A
 
 # Diagrama de blocos do sistema
   ![System Diagram](docs/img/block_diagram.jfif)  
+Devido ao ESP32 ser a melhor solução nos itens relacionados à preço, quantidade de núcleos e desempenho competitivo na corrente em modo sleep, foi escolhida esta plataforma para o desenvolvimento do projeto.
 
 ## Servidor Web
 
