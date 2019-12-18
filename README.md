@@ -1,7 +1,10 @@
 # Home-Automation-System (HAS)
-O HAS é um sistema de automação residencial, ao qual existem alguns módulos que se comunicam através de um serviço de núvem.
+O HAS é um sistema de automação residencial projetado para conter dispositivos sensores e atuadores se comunicam através de um serviço de núvem, permitindo controle e monitoramento remoto.
 
-Requerimentos:
+## Vídeo demonstrativo:
+https://www.youtube.com/watch?v=QVMtEgsxKL0&feature=youtu.be
+
+Requisitos de projeto:
 1. **Controle de acesso**
     1. Um *controle de acesso* com reconhecimento de rosto (por exemplo: abrir uma trava elétrica de 12V)
     2. Uma interface de registro, permitindo acesso por reconhecimento de face para vários usuários
