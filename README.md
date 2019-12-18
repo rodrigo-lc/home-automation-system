@@ -26,7 +26,7 @@ https://www.youtube.com/watch?v=QVMtEgsxKL0&feature=youtu.be
     2. Sensores de temperatura sem fio (bateria)
     3. Sensores de janela e porta abertos / fechados
     4. Switches inteligentes (tomadas inteligentes)
-    5. Motorista para controlar portas e persianas
+    5. Motor para controlar portas, persianas ou janelas
     6. O sistema deve ter um relógio de tempo real para fornecer registro de hora e data
 
 6. **Consumo de energia**
